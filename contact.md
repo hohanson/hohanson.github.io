@@ -1,4 +1,4 @@
-## Contact
+# Contact
 
 **E-mail**  
 hohanson@uchicago.edu
