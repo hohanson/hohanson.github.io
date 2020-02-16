@@ -1,6 +1,7 @@
 ## Contact
 
-**E-mail**\\
+**E-mail**
+
 hohanson@uchicago.edu
 
 **Phone**
