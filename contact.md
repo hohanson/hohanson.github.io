@@ -1,5 +1,8 @@
-## Email
+## Contact
 
-Personal: hohanson928@gmail.com
+**E-mail**
+hohanson@uchicago.edu
 
-Academic: hohanson@uchicago.edu
+**Phone**
+
+**Mailing address**
