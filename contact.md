@@ -4,10 +4,8 @@
 hohanson@uchicago.edu
 
 **Phone**  
-<phone>
 
 **Mailing address**  
-<mailing address>
 
 ---
 
