@@ -1,6 +1,6 @@
 ## Welcome to GitHub Pages
 
-[contact](https://github.com/hohanson/contact/)
+[contact](https://hohanson.github.io/contact)
 
 You can use the [editor on GitHub](https://github.com/hohanson/hohanson.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
 
