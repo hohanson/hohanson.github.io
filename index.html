@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>hansonomics</title>
+  <link rel="icon" type="image/png" href="assets/eulerJoke-circle-128.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,500;0,600;1,400&family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Reset & Base ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #FFFFFF;
+      --text:     #2E2D29;
+      --subtle:   #53565A;
+      --rule:     #EAEAEA;
+      --accent:   #B1040E;
+      --nav-h:    56px;
+      --serif:    'Noto Serif', Georgia, serif;
+      --sans:     'Roboto', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 15.5px;
+      line-height: 1.72;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Nav ───────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      z-index: 100;
+    }
+
+    .nav-brand {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--subtle);
+      text-decoration: none;
+      padding-bottom: 3px;
+      border-bottom: 1.5px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ─── Page Layout ───────────────────────────────────────────── */
+    main { padding-top: var(--nav-h); }
+
+    section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 88px 48px;
+    }
+
+    section + section {
+      border-top: 1px solid var(--rule);
+    }
+
+    /* ─── Section Headers ───────────────────────────────────────── */
+    .section-label {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 36px;
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-size: 1.85rem;
+      font-weight: 400;
+      line-height: 1.25;
+      margin-bottom: 20px;
+    }
+
+    /* ─── Home / Hero ───────────────────────────────────────────── */
+    #home {
+      padding-top: 0;
+      padding-bottom: 96px;
+    }
+
+    .hero-banner-wrap {
+      position: relative;
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      margin-bottom: 72px;
+    }
+
+    .hero-banner {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .hero-name-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--serif);
+      font-size: 3.2rem;
+      font-weight: 500;
+      color: #FFFFFF;
+      letter-spacing: 0.01em;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.35);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .hero-photo {
+      width: 320px;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.88);
+      border-radius: 16px;
+    }
+
+    .hero-bio {
+      font-size: 0.975rem;
+      line-height: 1.78;
+      color: #2E2E2E;
+      max-width: 52ch;
+    }
+
+    /* ─── Icon Links ────────────────────────────────────────────── */
+    .icon-links {
+      display: flex;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .icon-link {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1.5px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: var(--subtle);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .icon-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .icon-link svg {
+      width: 15px;
+      height: 15px;
+      fill: currentColor;
+    }
+
+    /* CV uses a text label instead of icon */
+    .icon-link-cv {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+    }
+
+    /* ─── Research ──────────────────────────────────────────────── */
+    .paper-list { list-style: none; }
+
+    .paper {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .paper:first-child { border-top: 1px solid var(--rule); }
+
+    .paper-title {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 500;
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    .paper-meta {
+      font-size: 0.82rem;
+      color: var(--subtle);
+      margin-bottom: 8px;
+    }
+
+    .paper-list + h2 { margin-top: 56px; }
+
+    /* ─── Abstract Toggle ───────────────────────────────────────── */
+    .paper-abstract {
+      font-size: 0.88rem;
+      color: #444;
+      line-height: 1.7;
+      max-width: 66ch;
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.3s ease, opacity 0.25s ease, margin-top 0.25s ease;
+      margin-top: 0;
+    }
+
+    .paper-abstract.open {
+      max-height: 400px;
+      opacity: 1;
+      margin-top: 10px;
+    }
+
+    .abstract-toggle {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      font-family: var(--sans);
+      font-size: 0.76rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+
+    .abstract-toggle:hover { border-bottom-color: var(--accent); }
+
+    .paper-links {
+      display: flex;
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .paper-links a {
+      font-size: 0.76rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+
+    .paper-links a:hover { border-bottom-color: var(--accent); }
+
+    .research-note {
+      font-size: 0.85rem;
+      color: var(--subtle);
+      margin-top: 32px;
+      font-style: italic;
+    }
+
+    /* ─── Teaching ──────────────────────────────────────────────── */
+    .teaching-intro {
+      font-size: 0.975rem;
+      color: #2E2E2E;
+      max-width: 60ch;
+      margin-bottom: 40px;
+      line-height: 1.78;
+    }
+
+    .course-block { margin-bottom: 40px; }
+
+    .course-block-year {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--subtle);
+      margin-bottom: 14px;
+    }
+
+    .course {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: start;
+    }
+
+    .course:first-of-type { border-top: 1px solid var(--rule); }
+
+    .course-name {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .course-role {
+      font-size: 0.82rem;
+      color: var(--subtle);
+      margin-top: 3px;
+    }
+
+    .course-term {
+      font-size: 0.8rem;
+      color: var(--subtle);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    /* ─── Footer ────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 32px 48px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-text {
+      font-size: 0.78rem;
+      color: var(--subtle);
+    }
+
+    .footer-text a {
+      color: var(--subtle);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      transition: color 0.15s;
+    }
+
+    .footer-text a:hover { color: var(--text); }
+
+    /* ─── Responsive ────────────────────────────────────────────── */
+    @media (max-width: 680px) {
+      nav { padding: 0 24px; }
+
+      .nav-links { gap: 20px; }
+
+      section { padding: 64px 24px; }
+
+      #home { padding-top: 64px; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .hero-photo {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+      }
+
+      footer { padding: 28px 24px; }
+
+      .footer-inner { flex-direction: column; gap: 8px; align-items: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FSQ0T9H4WP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-FSQ0T9H4WP');
+  </script>
+</head>
+<body>
+
+  <!-- ─── Navigation ─────────────────────────────────────────── -->
+  <nav>
+    <a href="#home" class="nav-brand">hansonomics</a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- ─── Home ───────────────────────────────────────────────── -->
+    <section id="home">
+
+      <!-- Wide banner with name overlay -->
+      <div class="hero-banner-wrap">
+        <img class="hero-banner" src="assets/banner.jpg" alt="" />
+        <h1 class="hero-name-overlay">Hanson Ho</h1>
+      </div>
+
+      <div class="hero">
+
+        <img class="hero-photo" src="assets/photo.jpg" alt="Hanson Ho" />
+
+        <div class="hero-info">
+
+          <p class="hero-bio">
+            I am a PhD candidate in Finance at Stanford GSB. My research focuses on
+            international trade, international finance, and geoeconomics. Prior to Stanford,
+            I was a predoctoral fellow at the Fama-Miller Center at Chicago Booth. I hold
+            an MA in Economics from the University of Chicago and a BA in Economics and
+            Finance from the University of Hong Kong.
+          </p>
+
+          <!-- Icon links: CV, Email, Google Scholar, GitHub -->
+          <div class="icon-links">
+
+            <!-- CV -->
+            <a href="assets/cv.pdf" class="icon-link" title="Curriculum Vitae" target="_blank" rel="noopener">
+              <span class="icon-link-cv">CV</span>
+            </a>
+
+            <!-- Email -->
+            <a href="mailto:hohanson@stanford.edu" class="icon-link" title="Email">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/>
+              </svg>
+            </a>
+
+            <!-- Google Scholar -->
+            <a href="https://scholar.google.com/citations?user=UwblKv0AAAAJ" class="icon-link" title="Google Scholar" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L0 9l4 2.3V18c0 1.1 3.6 4 8 4s8-2.9 8-4v-6.7L24 9 12 2zm0 2.3 8.5 4.9-2.2 1.2L12 6.5l-6.3 3.9-2.2-1.2L12 4.3zm6 13.2c0 .6-2.7 2.5-6 2.5s-6-1.9-6-2.5v-5.4l6 3.7 6-3.7v5.4zm-6-3.6L5.8 10l6.2-3.8L18.2 10 12 13.9z"/>
+              </svg>
+            </a>
+
+            <!-- GitHub -->
+            <a href="https://github.com/hohanson" class="icon-link" title="GitHub" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 .297C5.37.297 0 5.667 0 12.297c0 5.302 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.73.083-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23A11.51 11.51 0 0 1 12 6.797c1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.63-5.373-12-12-12"/>
+              </svg>
+            </a>
+
+          </div><!-- /.icon-links -->
+        </div><!-- /.hero-info -->
+      </div><!-- /.hero -->
+
+    </section>
+
+    <!-- ─── Research ────────────────────────────────────────────── -->
+    <section id="research">
+      <p class="section-label">Research</p>
+      <h2>Working Papers</h2>
+
+      <ul class="paper-list">
+
+        <li class="paper">
+          <p class="paper-title">Skin in the Game: Colleges' Financial Incentives and Student Outcomes</p>
+          <p class="paper-meta">
+            With <em>Nano Barahona, Cauê Dobbin, Sebastián Otero, and Constantine Yannelis</em>
+          </p>
+          <div class="paper-links">
+            <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract</button>
+            <a href="#">Paper</a>
+            <a href="https://www.wsj.com/us-news/education/student-college-loan-changes-53d489c5" target="_blank" rel="noopener">Media</a>
+          </div>
+          <p class="paper-abstract">
+            This paper studies how schools respond to financial incentives. Governments can
+            penalize institutions with high dropout or loan default rates, and these institutions
+            can respond by increasing quality or changing the selection of students. We study
+            the predictions of the model using a 2017 reform in Brazil, which made schools pay
+            a fee for students receiving federal student loans that dropped out or defaulted.
+            Consistent with the predictions of the model, we find that schools more reliant on
+            government aid reduced dropout rates, primarily by increasing quality.
+          </p>
+        </li>
+
+      </ul>
+
+      <h2>Work in Progress</h2>
+      <ul class="paper-list">
+
+        <li class="paper">
+          <p class="paper-title">Geoeconomic Risk and Investment</p>
+          <p class="paper-meta">In preparation</p>
+        </li>
+
+      </ul>
+
+    </section>
+
+    <!-- ─── Teaching ─────────────────────────────────────────────── -->
+    <section id="teaching">
+      <p class="section-label">Teaching</p>
+      <h2>Courses</h2>
+      <div class="course-block">
+        <p class="course-block-year">2025 &ndash; 2026</p>
+
+        <div class="course">
+          <div>
+            <p class="course-name">Financial Markets (PhD Core)</p>
+            <p class="course-role">TA to Antonio Coppola</p>
+          </div>
+          <p class="course-term">Winter 2026</p>
+        </div>
+
+        <div class="course">
+          <div>
+            <p class="course-name">International Finance and Macroeconomics (MBA)</p>
+            <p class="course-role">TA to Antonio Coppola</p>
+          </div>
+          <p class="course-term">Spring 2026</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ─── Footer ──────────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-text">&copy; 2026 Hanson Ho</p>
+      <p class="footer-text">Stanford GSB</p>
+      <p class="footer-text"><a href="mailto:hohanson@stanford.edu">hohanson@stanford.edu</a></p>
+    </div>
+  </footer>
+
+  <!-- ─── Nav active-link scroll tracking ─────────────────────── -->
+  <script>
+    function toggleAbstract(btn) {
+      var abstract = btn.closest('.paper').querySelector('.paper-abstract');
+      var isOpen = abstract.classList.toggle('open');
+      btn.textContent = isOpen ? 'Hide' : 'Abstract';
+    }
+
+    (function () {
+      var sections = ['home', 'research', 'teaching'];
+      var links = {};
+      sections.forEach(function (id) {
+        var el = document.querySelector('.nav-links a[href="#' + id + '"]');
+        if (el) links[id] = el;
+      });
+
+      function onScroll() {
+        var scrollY = window.scrollY + 80; // offset for fixed nav
+        var current = sections[0];
+
+        sections.forEach(function (id) {
+          var el = document.getElementById(id);
+          if (el && el.offsetTop <= scrollY) current = id;
+        });
+
+        Object.keys(links).forEach(function (id) {
+          links[id].classList.toggle('active', id === current);
+        });
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll(); // run once on load
+    })();
+  </script>
+
+</body>
+</html>
