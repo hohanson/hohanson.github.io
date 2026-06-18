@@ -19,6 +19,7 @@
       --rule:     #EAEAEA;
       --accent:   #B1040E;
       --nav-h:    56px;
+      --link:     #006CB8;
       --serif:    'Noto Serif', Georgia, serif;
       --sans:     'Roboto', sans-serif;
     }
@@ -130,8 +131,11 @@
 
     .hero-banner {
       width: 100%;
-      height: auto;
-      display: block;
+      padding-top: 39.25%;
+      background-image: url('assets/banner.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
 
     .hero-name-overlay {
@@ -170,6 +174,18 @@
       line-height: 1.78;
       color: #2E2E2E;
       max-width: 52ch;
+    }
+
+    .hero-bio a {
+      color: var(--link);
+      text-decoration: none;
+      border-bottom: 1px solid var(--link);
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .hero-bio a:hover {
+      color: #004f8a;
+      border-bottom-color: #004f8a;
     }
 
     /* ─── Icon Links ────────────────────────────────────────────── */
@@ -400,6 +416,8 @@
         margin: 0 auto;
       }
 
+      .hero-name-overlay { font-size: 2rem; }
+
       footer { padding: 28px 24px; }
 
       .footer-inner { flex-direction: column; gap: 8px; align-items: center; }
@@ -438,7 +456,7 @@
 
       <!-- Wide banner with name overlay -->
       <div class="hero-banner-wrap">
-        <img class="hero-banner" src="assets/banner.jpg" alt="" />
+        <div class="hero-banner"></div>
         <h1 class="hero-name-overlay">Hanson Ho</h1>
       </div>
 
@@ -449,11 +467,11 @@
         <div class="hero-info">
 
           <p class="hero-bio">
-            I am a PhD candidate in Finance at Stanford GSB. My research focuses on
+            I am a PhD candidate in Finance at <a href="https://www.gsb.stanford.edu" target="_blank" rel="noopener">Stanford GSB</a>. My research focuses on
             international trade, international finance, and geoeconomics. Prior to Stanford,
-            I was a predoctoral fellow at the Fama-Miller Center at Chicago Booth. I hold
-            an MA in Economics from the University of Chicago and a BA in Economics and
-            Finance from the University of Hong Kong.
+            I was a predoctoral fellow at the <a href="https://www.chicagobooth.edu/research/fama-miller" target="_blank" rel="noopener">Fama-Miller Center</a> at Chicago Booth. I hold
+            an MA in Economics from the <a href="https://www.uchicago.edu" target="_blank" rel="noopener">University of Chicago</a> and a BA in Economics and
+            Finance from the <a href="https://www.hku.hk" target="_blank" rel="noopener">University of Hong Kong</a>.
           </p>
 
           <!-- Icon links: CV, Email, Google Scholar, GitHub -->
